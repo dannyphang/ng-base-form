@@ -4,6 +4,15 @@ import { MenuItem } from 'primeng/api';
 import { ToastPositionType } from 'primeng/toast';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
+export class BasedDto {
+    tenantId?: string;
+    createdDate?: Date;
+    createdBy?: string;
+    modifiedDate?: Date;
+    modifiedBy?: string;
+    statusId?: number;
+}
+
 export interface BaseFormConfig {
     id?: string;
     type: CONTROL_TYPE;
@@ -371,4 +380,27 @@ export interface EditorToolbarSetupDto {
     backgroundColor?: boolean;
     header?: boolean;
     formula?: boolean;
+}
+
+export class AttachmentDto extends BasedDto {
+    uid?: string;
+    folderName: string;
+    fullPath: string;
+    fileName: string;
+    fileType: string;
+    activityUid: string;
+    fileSize: number;
+    contactUid: string[];
+    companyUid: string[];
+    url?: string;
+}
+
+export class MessageModel {
+    message: string;
+    severity?: 'success' | 'info' | 'warn' | 'error';
+    key?: string;
+    icon?: string;
+    isLoading?: boolean;
+    messageData?: any[];
+    sticky?: boolean;
 }

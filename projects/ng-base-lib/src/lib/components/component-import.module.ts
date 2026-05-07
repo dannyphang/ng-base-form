@@ -13,6 +13,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BaseDropdownComponent } from "./dropdown/dropdown.component";
 import { OnlyNumberDirective } from "../util/directives/only-number.directive";
 import { PasswordDirective } from "primeng/password";
+import { ChipComponent } from "./chip/chip.component";
+import { BaseRadioComponent } from "./radio/radio.component";
+import { ToastComponent } from "./toast/toast.component";
+import { TextareaModule } from 'primeng/textarea';
+import { BaseDatepickerComponent } from "./datepicker/datepicker.component";
+import { BreadcrumbComponent } from "./breadcrumb/breadcrumb.component";
 
 const components = [
     BaseLabelComponent,
@@ -22,7 +28,13 @@ const components = [
     FormItemComponent,
     BaseFormComponent,
     BaseCheckboxComponent,
-    BaseDropdownComponent
+    BaseDropdownComponent,
+    ChipComponent,
+    BaseRadioComponent,
+    ToastComponent,
+    TextareaModule,
+    BaseDatepickerComponent,
+    BreadcrumbComponent
 ]
 
 export const ComponentImports = [

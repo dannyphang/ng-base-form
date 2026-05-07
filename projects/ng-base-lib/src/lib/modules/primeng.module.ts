@@ -11,6 +11,12 @@ import { InputTextModule } from 'primeng/inputtext';
 import { ChipModule } from 'primeng/chip';
 import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { RadioButtonModule } from 'primeng/radiobutton';
+import { MessageModule } from 'primeng/message';
+import { ToastModule } from 'primeng/toast';
+import { DatePickerModule } from 'primeng/datepicker';
+import { BreadcrumbModule } from 'primeng/breadcrumb';
 
 const PRIMENG_MODULES: any[] = [
     ButtonModule,
@@ -23,7 +29,13 @@ const PRIMENG_MODULES: any[] = [
     InputTextModule,
     ChipModule,
     IconFieldModule,
-    InputIconModule
+    InputIconModule,
+    MultiSelectModule,
+    RadioButtonModule,
+    MessageModule,
+    ToastModule,
+    DatePickerModule,
+    BreadcrumbModule,
 ]
 
 @NgModule({

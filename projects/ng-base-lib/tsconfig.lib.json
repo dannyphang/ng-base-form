@@ -8,7 +8,8 @@
     "declarationMap": true,
     "types": [],
     "strictPropertyInitialization": false,
-    "noImplicitAny": false
+    "noImplicitAny": false,
+    "useDefineForClassFields": false
   },
   "include": ["src/**/*.ts"],
   "exclude": ["**/*.spec.ts"]

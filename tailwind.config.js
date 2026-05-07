@@ -3,7 +3,8 @@ module.exports = {
   prefix: 'tw-', // Your custom prefix to protect PrimeNG!
   content: [
     "./src/**/*.{html,ts}",                  
-    "./projects/ng-base-lib/**/*.{html,ts}"  
+    "./projects/ng-base-lib/**/*.{html,ts}"  , 
+    "./node_modules/ng-base-lib/**/*.{html,ts,js,mjs}"
   ],
   theme: {
     extend: {},
