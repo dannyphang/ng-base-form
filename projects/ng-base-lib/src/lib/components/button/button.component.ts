@@ -1,0 +1,65 @@
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ComponentImports } from '../component-import.module';
+import { BaseFieldControlComponent } from '../base-field-control/base-field-control';
+import { SplitButton } from 'primeng/splitbutton';
+
+@Component({
+  selector: 'app-base-button',
+  imports: [ComponentImports],
+  templateUrl: './button.component.html',
+  styleUrl: './button.component.scss',
+})
+export class BaseButtonComponent
+  extends BaseFieldControlComponent
+  implements OnInit {
+  @Input() outlined!: boolean;
+  @Input() color: 'normal' | 'red' | 'yellow' | 'green' = 'normal';
+  @Input() iconUrl!: string;
+  @Input() rightIcon: boolean = false;
+  @Input() iconName: string = '';
+  @Input() type: 'normal' | 'split' = 'normal';
+  @Input() buttonType: 'button' | 'submit' = 'button';
+  @Input() isTextStyle: boolean = false;
+  @Input() rounded: boolean = false;
+  @Input() splitButtonItems: {
+    label: string;
+    icon?: string;
+    command?: () => void;
+  }[] = [];
+  @Input() splitOneClick = false;
+  @Output() onClick = new EventEmitter();
+  @Input() actionType?: string | string[];
+  @Input() createdBy?: string;
+  @Input() moduleCode?: any;
+  @Input() buttonClass: string = '';
+  @Input() buttonStyleClass: string = '';
+  @Input() loading: boolean = false;
+  @Input() raised: boolean = false;
+  @Input() isSpinning: boolean = false;
+  @Input() severity: 'primary' | 'secondary' = 'primary';
+
+  constructor() {
+    super();
+  }
+
+  actionPermission: {
+    moduleCode: string | string[];
+    actionType: string | string[];
+  } = null as any;
+
+  ngOnInit(): void {
+    if (this.type === 'split' && this.splitOneClick) {
+      SplitButton.prototype.onDefaultButtonClick =
+        SplitButton.prototype.onDropdownButtonClick;
+    }
+
+    if (this.actionPermission) {
+      this.moduleCode = this.actionPermission.moduleCode;
+      this.actionType = this.actionPermission.actionType;
+    }
+  }
+
+  click($event: MouseEvent) {
+    this.onClick.emit($event);
+  }
+}
