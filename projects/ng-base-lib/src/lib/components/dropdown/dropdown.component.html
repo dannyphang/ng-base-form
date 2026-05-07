@@ -1,0 +1,69 @@
+<div [ngClass]="['dropdown-container', containerClass]">
+  <app-base-label
+    [required]="checkRequiredField()"
+    [label]="label"
+    [labelOneLine]="labelOneLine"
+    *ngIf="label"
+    [iconLabelTooltip]="iconLabelTooltip"
+  >
+  </app-base-label>
+  <p-select
+    #dropdown
+    class="dropdown-item"
+    [options]="options"
+    appendTo="body"
+    styleClass="base-dropdown-style"
+    panelStyleClass="dropdown-overlay-style"
+    [placeholder]="placeholder | translate"
+    [formControl]="fieldControl"
+    [ngClass]="{ invalid: checkInvalidField() }"
+    optionLabel="label"
+    optionValue="value"
+    optionDisabled="disabled"
+    [filter]="searchable"
+    filterBy="label"
+    (onFilter)="filterChange.next($event.filter)"
+    [showClear]="showClear"
+    (onChange)="onChange($event)"
+    [tooltip]="selectedName"
+    tooltipPosition="bottom"
+    [virtualScroll]="!!virtualScroll"
+    [virtualScrollItemSize]="lazyLoading ? 224 : 38"
+    [virtualScrollOptions]="{
+      showLoader: true,
+      loading: lazyLoading,
+    }"
+    [lazy]="!!virtualScroll"
+    (onLazyLoad)="onLazyLoad($event)"
+    (onShow)="onShow($event)"
+    (onClick)="onClick($event)"
+  >
+    <ng-template pTemplate="loader">
+      <div class="dropdow-spinner">
+        <p-progressSpinner strokeWidth="2"></p-progressSpinner>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="selectedItem">
+      {{ getLabelByValue(fieldControl.value) | translate }}
+    </ng-template>
+    <ng-template let-option pTemplate="item">
+      <div class="dropdown-item-div tw-flex tw-gap-[var(--content-gap)]">
+        <div *ngIf="option.preIcon" class="dropdown-item-icon">
+          <i
+            *ngIf="isObject(option.preIcon); else stringIcon"
+            [class]="option.preIcon.icon"
+            [ngStyle]="option.preIcon.style"
+          ></i>
+          <ng-template #stringIcon>
+            <i [class]="option.preIcon"></i>
+          </ng-template>
+        </div>
+        <div class="dropdown-label">
+          {{ option.label | translate }}
+        </div>
+      </div>
+    </ng-template>
+  </p-select>
+  <app-base-label ngClass="mt-1" *ngIf="checkInvalidField()" [label]="errorMessage" mode="error">
+  </app-base-label>
+</div>
