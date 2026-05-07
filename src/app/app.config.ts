@@ -9,12 +9,14 @@ import { HttpClient } from '@angular/common/http';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
 
+import { appProviders } from './app-providers';
+
 export class CustomTranslateLoader implements TranslateLoader {
   constructor(private http: HttpClient) { }
 
   getTranslation(lang: string): Observable<any> {
     // This does exactly what TranslateHttpLoader does, without the type errors
-    return this.http.get(`../../public/assets/i18n/${lang}.json`);
+    return this.http.get(`../assets/i18n/${lang}.json`);
   }
 }
 
@@ -30,19 +32,26 @@ export const appConfig: ApplicationConfig = {
 
     providePrimeNG({
       theme: {
-        preset: Aura
+        preset: Aura,
+        options: {
+          darkModeSelector: 'light',
+          cssLayer: false
+        }
       }
     }),
 
     importProvidersFrom(
       TranslateModule.forRoot({
         defaultLanguage: 'en',
+        useDefaultLang: true,
         loader: {
           provide: TranslateLoader,
           useFactory: HttpLoaderFactory,
           deps: [HttpClient]
         }
       })
-    )
+    ),
+
+    ...appProviders,
   ]
 };

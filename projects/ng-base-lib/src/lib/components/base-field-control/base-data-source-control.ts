@@ -22,8 +22,8 @@ import {
   timer,
 } from 'rxjs';
 import { BaseFieldControlComponent } from './base-field-control';
-import { ROW_PER_PAGE_DEFAULT } from '../../constants/common.constants';
-import { BaseDataSourceActionEvent, VirtualScrollConfig, FormConfig, OptionsModel } from '../../../services/components.service';
+import { BaseDataSourceActionEvent, FormConfig, OptionsModel, VirtualScrollConfig } from '../../services/components.service';
+import { ROW_PER_PAGE_DEFAULT } from '../../util/common.const';
 
 // eslint-disable-next-line @angular-eslint/component-selector
 @Component({ selector: '', template: '' })

@@ -7,6 +7,12 @@ import { FormArrayComponent } from "./form/form-array.component";
 import { FormArrayItemComponent } from "./form/form-array-item.component";
 import { BaseFormComponent } from "./form/form.component";
 import { FormItemComponent } from "./form/form-item.component";
+import { BaseCheckboxComponent } from "./checkbox/checkbox.component";
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BaseDropdownComponent } from "./dropdown/dropdown.component";
+import { OnlyNumberDirective } from "../util/directives/only-number.directive";
+import { PasswordDirective } from "primeng/password";
 
 const components = [
     BaseLabelComponent,
@@ -14,7 +20,9 @@ const components = [
     FormArrayComponent,
     FormArrayItemComponent,
     FormItemComponent,
-    BaseFormComponent
+    BaseFormComponent,
+    BaseCheckboxComponent,
+    BaseDropdownComponent
 ]
 
 export const ComponentImports = [
@@ -22,6 +30,9 @@ export const ComponentImports = [
 
     PrimeNgModule,
     CommonModule,
-
-    TranslateModule
+    FormsModule,
+    ReactiveFormsModule,
+    TranslateModule,
+    OnlyNumberDirective,
+    PasswordDirective
 ];
