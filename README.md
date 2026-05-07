@@ -16,10 +16,6 @@ Whenever you add new components or make changes to the library, follow these str
 Open the library's specific `package.json` located at `projects/ng-base-lib/package.json` and increase the version number. Note: You cannot overwrite an existing published version.
 
 ```
-```text?code_stdout&code_event_index=2
-README-v2.md file generated successfully.
-
-```json
 {
   "name": "ng-base-lib",
   "version": "0.0.2"
