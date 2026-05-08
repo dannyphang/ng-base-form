@@ -30,6 +30,8 @@ export abstract class BaseFieldControlComponent {
   @Input() name = '';
   @Input() iconLabelTooltip: string | { key: string; param: object } = '';
 
+  @Input() styleClass: string;
+
   errorMessage!: string;
 
   checkRequiredField() {

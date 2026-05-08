@@ -32,7 +32,6 @@ export class BaseButtonComponent
   @Input() createdBy?: string;
   @Input() moduleCode?: any;
   @Input() buttonClass: string = '';
-  @Input() buttonStyleClass: string = '';
   @Input() loading: boolean = false;
   @Input() raised: boolean = false;
   @Input() isSpinning: boolean = false;

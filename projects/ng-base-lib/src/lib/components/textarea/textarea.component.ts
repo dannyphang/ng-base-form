@@ -19,7 +19,6 @@ export class BaseTextareaComponent
   @Input() instructionText = '';
   @Input() tooltip = '';
   @Input() autoFocus: boolean = false;
-  @Input() customClass: string = '';
   currentLength: number = 0;
   constructor() {
     super();

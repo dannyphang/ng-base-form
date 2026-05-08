@@ -8,10 +8,7 @@
     [iconLabelTooltip]="iconLabelTooltip"
   >
   </app-base-label>
-  <div
-    class="flex flex-wrap"
-    [ngClass]="{ 'flex-column': direction === 'column' }"
-  >
+  <div class="flex flex-wrap" [ngClass]="{ 'flex-column': direction === 'column' }">
     <div
       [class]="'input-container mr-4 ' + inputContainerClass"
       [ngClass]="{ 'mr-4': direction === 'row' }"
@@ -22,16 +19,12 @@
         [formControl]="fieldControl"
         [value]="item.value"
         [inputId]="label + i"
+        [class]="styleClass"
       ></p-radioButton>
       <label *ngIf="!!item.label" [for]="label + i" class="fz-14_lh-16">{{
         item.label | translate
       }}</label>
     </div>
   </div>
-  <app-base-label
-    *ngIf="checkInvalidField()"
-    [label]="errorMessage"
-    mode="error"
-  >
-  </app-base-label>
+  <app-base-label *ngIf="checkInvalidField()" [label]="errorMessage" mode="error"> </app-base-label>
 </div>

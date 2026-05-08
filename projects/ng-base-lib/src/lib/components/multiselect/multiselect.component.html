@@ -10,7 +10,7 @@
   <div class="p-inputgroup">
     <p-multiSelect
       #multiselect
-      class="border-noround-left"
+      [class]="styleClass + 'border-noround-left'"
       [options]="options"
       [formControl]="fieldControl"
       [ngClass]="{ invalid: checkInvalidField() }"
@@ -24,7 +24,7 @@
       [virtualScrollItemSize]="lazyLoading ? 200 : 38"
       [virtualScrollOptions]="{
         showLoader: true,
-        loading: lazyLoading
+        loading: lazyLoading,
       }"
       [lazy]="!!virtualScroll"
       (onLazyLoad)="onLazyLoad($event)"
@@ -53,10 +53,5 @@
       (remove)="handleRemove(item)"
     ></app-chip>
   </div>
-  <app-base-label
-    *ngIf="checkInvalidField()"
-    [label]="errorMessage"
-    mode="error"
-  >
-  </app-base-label>
+  <app-base-label *ngIf="checkInvalidField()" [label]="errorMessage" mode="error"> </app-base-label>
 </div>

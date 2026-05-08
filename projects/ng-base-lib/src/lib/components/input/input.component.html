@@ -31,6 +31,7 @@
         (blur)="onBlur()"
         [maxLength]="maxLength"
         [onlyNumber]="mode === 'phone'"
+        [class]="styleClass"
       />
 
       <img *ngIf="!!iconUrl" [src]="iconUrl" />
@@ -61,6 +62,7 @@
         [maxLength]="maxLength"
         *ngIf="isValidPassword"
         validatePassword
+        [class]="styleClass"
       />
 
       <input
@@ -80,6 +82,7 @@
         (blur)="onBlur()"
         [maxLength]="maxLength"
         *ngIf="!isValidPassword"
+        [class]="styleClass"
       />
 
       <img *ngIf="!!iconUrl" [src]="iconUrl" />
@@ -121,6 +124,7 @@
         pAutoFocus
         [autofocus]="autoFocus"
         [onlyNumber]="true"
+        [class]="styleClass"
       ></p-inputNumber>
 
       <img *ngIf="!!iconUrl" [src]="iconUrl" />

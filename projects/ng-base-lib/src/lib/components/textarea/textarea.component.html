@@ -9,7 +9,7 @@
   </app-base-label>
   <div class="input-container">
     <textarea
-      pInputTextarea
+      pTextarea
       [rows]="lineNumber"
       placeholder="{{ placeholder | translate }}"
       [autoResize]="autoResize"
@@ -19,17 +19,12 @@
       pTooltip="{{ tooltip | translate }}"
       pAutoFocus
       [autofocus]="autoFocus"
-      [class]="customClass"
+      [class]="styleClass"
     ></textarea>
     <div class="count" *ngIf="maxLength > 0 && !hideLengthLimit">
       ({{ currentLength }}/{{ maxLength }} characters)
     </div>
   </div>
-  <app-base-label
-    *ngIf="checkInvalidField()"
-    [label]="errorMessage"
-    mode="error"
-  >
-  </app-base-label>
+  <app-base-label *ngIf="checkInvalidField()" [label]="errorMessage" mode="error"> </app-base-label>
   <div class="text-color-secondary">{{ instructionText | translate }}</div>
 </div>

@@ -10,7 +10,7 @@
   <div class="input-container">
     <p-datepicker
       *ngIf="mode === 'range' || mode === 'single'"
-      class="datepicker-item"
+      [class]="'datepicker-item ' + styleClass"
       [keepInvalid]="true"
       iconPos="left"
       [showIcon]="true"

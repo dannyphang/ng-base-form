@@ -19,6 +19,7 @@ import { ToastComponent } from "./toast/toast.component";
 import { TextareaModule } from 'primeng/textarea';
 import { BaseDatepickerComponent } from "./datepicker/datepicker.component";
 import { BreadcrumbComponent } from "./breadcrumb/breadcrumb.component";
+import { BaseTextareaComponent } from "./textarea/textarea.component";
 
 const components = [
     BaseLabelComponent,
@@ -32,7 +33,7 @@ const components = [
     ChipComponent,
     BaseRadioComponent,
     ToastComponent,
-    TextareaModule,
+    BaseTextareaComponent,
     BaseDatepickerComponent,
     BreadcrumbComponent
 ]

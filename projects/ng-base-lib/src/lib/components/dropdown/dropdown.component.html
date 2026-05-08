@@ -9,7 +9,7 @@
   </app-base-label>
   <p-select
     #dropdown
-    class="dropdown-item"
+    [class]="'dropdown-item ' + styleClass"
     [options]="options"
     appendTo="body"
     styleClass="base-dropdown-style"

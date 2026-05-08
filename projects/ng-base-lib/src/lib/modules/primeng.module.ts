@@ -17,6 +17,7 @@ import { MessageModule } from 'primeng/message';
 import { ToastModule } from 'primeng/toast';
 import { DatePickerModule } from 'primeng/datepicker';
 import { BreadcrumbModule } from 'primeng/breadcrumb';
+import { TextareaModule } from 'primeng/textarea';
 
 const PRIMENG_MODULES: any[] = [
     ButtonModule,
@@ -36,6 +37,7 @@ const PRIMENG_MODULES: any[] = [
     ToastModule,
     DatePickerModule,
     BreadcrumbModule,
+    TextareaModule,
 ]
 
 @NgModule({
