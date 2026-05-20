@@ -1,20 +1,10 @@
 :host ::ng-deep {
   .chip-box {
-    border: 1px solid var(--primary-color);
+    border: 1px solid var(--p-primary-color);
     height: 30px;
     display: flex;
     max-width: 200px;
-
-    .p-chip-text {
-      text-overflow: ellipsis;
-      overflow: hidden;
-      text-wrap: nowrap;
-
-      &:hover {
-        text-decoration: underline;
-        cursor: pointer;
-      }
-    }
+    width: fit-content;
   }
 
   .p-icon {
@@ -23,5 +13,16 @@
     &:hover {
       color: var(--highlight-text-color);
     }
+  }
+}
+
+.chip-label {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  text-wrap: nowrap;
+
+  &:hover {
+    text-decoration: underline;
+    cursor: pointer;
   }
 }

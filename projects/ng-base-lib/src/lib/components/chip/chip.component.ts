@@ -16,6 +16,10 @@ export class ChipComponent {
   @Input() attachment: AttachmentDto;
   @Input() isFile: boolean = false;
   @Input() downloadable: boolean = true;
+  @Input() styleClass: string = "";
+  @Input() labelStyleClass: string = "";
+  @Input() removeIconName: string = "pi pi-times-circle";
+  @Input() removeIconStyleClass: string = "";
   @Output() remove = new EventEmitter();
 
   isShowDIalog: boolean = false;

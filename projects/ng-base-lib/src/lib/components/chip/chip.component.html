@@ -1,17 +1,11 @@
 <p-chip
-  [label]="label"
   [removable]="removable"
-  styleClass="chip-box"
-  class="tw-flex tw-text-ellipsis tw-overflow-hidden"
+  [class]="styleClass + ' tw-flex tw-text-ellipsis tw-overflow-hidden chip-box'"
   (onRemove)="onRemove()"
-  *ngIf="!downloadable"
-></p-chip>
-<p-chip
-  [label]="label"
-  [removable]="removable"
-  styleClass="chip-box"
-  class="tw-flex tw-text-ellipsis tw-overflow-hidden"
-  (onRemove)="onRemove()"
-  *ngIf="downloadable"
-  (click)="previewFileClick()"
-></p-chip>
+  (click)="downloadable ? previewFileClick() : null"
+>
+  <div [class]="labelStyleClass + ' chip-label'">{{ label }}</div>
+  <ng-template #removeicon>
+    <i [class]="removeIconName + ' ' + removeIconStyleClass"></i>
+  </ng-template>
+</p-chip>
