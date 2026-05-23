@@ -1,8 +1,7 @@
-import { ChangeDetectorRef, Injectable, NgZone, ViewChild, ViewContainerRef } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { MessageService } from 'primeng/api';
 import { BehaviorSubject, Subject } from 'rxjs';
-import { Toast } from 'primeng/toast';
 import { MessageModel } from './components.service';
 
 @Injectable({
@@ -11,6 +10,11 @@ import { MessageModel } from './components.service';
 export class ToastService {
     private toastListSubject = new BehaviorSubject<MessageModel[]>([]);
     toastList$ = this.toastListSubject.asObservable();
+
+    // FIX: separate stream just for removal requests
+    private removeSubject = new Subject<string>();
+    remove$ = this.removeSubject.asObservable();
+
     private toasts: MessageModel[] = [];
 
     constructor(
@@ -19,7 +23,10 @@ export class ToastService {
     ) { }
 
     addSingle(toastConfig: MessageModel) {
-        // Set default values for severity and icon
+        if (!toastConfig.key) {
+            toastConfig.key = `toast-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`;
+        }
+
         switch (toastConfig.severity) {
             case 'success':
             case undefined:
@@ -48,7 +55,7 @@ export class ToastService {
                         this.loadMessageData(messageData).reduce((acc, cur) => {
                             acc[cur.label] = this.translateService.instant(cur.value);
                             return acc;
-                        }, {})
+                        }, {} as Record<string, string>)
                     ) || toastConfig.message
                     : '',
             key: toastConfig.key,
@@ -57,21 +64,18 @@ export class ToastService {
         });
         this.toastListSubject.next([...this.toasts]);
 
-        // Auto-remove if not sticky
+        // FIX: emit on remove$ instead of calling clear() directly
+        // so the component can play the leave animation first
         if (!toastConfig.sticky && !toastConfig.isLoading) {
-            setTimeout(() => this.clear(toastConfig.key), 3000);
+            setTimeout(() => this.removeSubject.next(toastConfig.key!), 3000);
         }
-
-        console.log(toastConfig.message);
     }
 
     private loadMessageData(data: any[]) {
-        return data.map((i) => {
-            return {
-                label: this.translateService.instant(i.key),
-                value: i.value,
-            };
-        });
+        return data.map((i) => ({
+            label: this.translateService.instant(i.key),
+            value: i.value,
+        }));
     }
 
     addMultiple(toastConfig: MessageModel[]) {
@@ -81,7 +85,7 @@ export class ToastService {
                     case 'success':
                     case undefined:
                         i.severity = 'success';
-                        i.icon = 'pi pi-check'
+                        i.icon = 'pi pi-check';
                         break;
                     case 'error':
                         i.icon = 'pi pi-times-circle';
@@ -95,36 +99,21 @@ export class ToastService {
                     detail: this.translateService.instant(i.message),
                     key: 'tr',
                     sticky: i.isLoading,
-                    icon: i.isLoading ? "pi pi-spin pi-spinner" : undefined,
+                    icon: i.isLoading ? 'pi pi-spin pi-spinner' : undefined,
                 };
             }),
         );
     }
 
-    // clear(key?: string | string[]) {
-    //     // this.messageService.clear()
-    //     // if (key) {
-    //     //     if (typeof key === 'string') {
-    //     //         this.messageService.clear(key);
-    //     //     }
-    //     // }
-    //     // else {
-    //     //     this.messageService.clear()
-    //     // }
-    // }
-
     clear(key?: string) {
-        // this.toast.messages = this.toast.messages.filter(
-        //     (x) => x.key !== key
-        // );
-        // const changeDetectorRef = this.toastRef.injector.get(ChangeDetectorRef);
-        // changeDetectorRef.detectChanges();
-
-
         if (key) {
             this.toasts = this.toasts.filter(t => t.key !== key);
+            this.removeSubject.next(key);  // FIX: route through remove$ so animation plays
         } else {
+            // Clear all — emit remove$ for every tracked toast
+            const keys = this.toasts.map(t => t.key!);
             this.toasts = [];
+            keys.forEach(k => this.removeSubject.next(k));
         }
         this.toastListSubject.next([...this.toasts]);
     }

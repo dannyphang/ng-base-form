@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, ViewEncapsulation } from '@angular/core';
 import { MessageModel } from '../../services/components.service';
 import { ToastService } from '../../services/toast.service';
 import { ComponentImports } from '../component-import.module';
@@ -7,50 +7,77 @@ import { ComponentImports } from '../component-import.module';
   selector: 'app-toast',
   templateUrl: './toast.component.html',
   styleUrls: ['./toast.component.scss'],
-  imports: [ComponentImports]
+  imports: [ComponentImports],
+  encapsulation: ViewEncapsulation.None
 })
-export class ToastComponent implements OnInit, AfterViewInit {
+export class ToastComponent implements OnInit {
   toastList: MessageModel[] = [];
-  enteredToasts = new Set<string>();
-  closingToasts = new Set<string>();
+  enteredToasts: Record<string, boolean> = {};
+  closingToasts: Record<string, boolean> = {};
 
-  constructor(private toastService: ToastService) { }
+  constructor(
+    private toastService: ToastService,
+    private cdr: ChangeDetectorRef,
+  ) { }
 
   ngOnInit() {
     this.toastService.toastList$.subscribe((list) => {
-      this.toastList = list;
+      const currentKeys = new Set(this.toastList.map(t => t.key));
+      const closingKeys = new Set(Object.keys(this.closingToasts));
 
-      // Mark new toasts as entered to trigger entrance animation
       list.forEach((toast) => {
-        if (!this.enteredToasts.has(toast.key)) {
-          setTimeout(() => this.enteredToasts.add(toast.key), 10);
+        if (!currentKeys.has(toast.key) && !closingKeys.has(toast.key!)) {
+          this.toastList.push(toast);
+          if (toast.key) {
+            this.enteredToasts[toast.key] = false;
+          }
+        }
+      });
+
+      this.cdr.detectChanges();
+
+      this.toastList.forEach((toast) => {
+        if (toast.key && !this.enteredToasts[toast.key]) {
+          setTimeout(() => {
+            this.enteredToasts[toast.key!] = true;
+            this.cdr.detectChanges();
+          }, 16);
         }
       });
     });
-  }
 
-  ngAfterViewInit() {
-    // Optional: ensure initial animations apply smoothly
-    setTimeout(() => {
-      this.toastList.forEach((t) => this.enteredToasts.add(t.key));
+    // FIX: auto-remove requests from the service go through
+    // removeToast() so the leave animation always plays
+    this.toastService.remove$.subscribe((key) => {
+      this.removeToast(key);
     });
   }
 
   removeToast(key: string) {
-    this.closingToasts.add(key);
+    // Guard: already closing, don't double-trigger
+    if (this.closingToasts[key]) return;
+
+    this.closingToasts[key] = true;
+    this.cdr.detectChanges();
 
     setTimeout(() => {
+      this.toastList = this.toastList.filter(t => t.key !== key);
+      delete this.closingToasts[key];
+      delete this.enteredToasts[key];
       this.toastService.clear(key);
-      this.closingToasts.delete(key);
-      this.enteredToasts.delete(key);
-    }, 300); // Match animation duration
+      this.cdr.detectChanges();
+    }, 300);
+  }
+
+  trackByKey(_: number, toast: MessageModel): string {
+    return toast.key ?? '';
   }
 
   isClosing(key: string): boolean {
-    return this.closingToasts.has(key);
+    return !!this.closingToasts[key];
   }
 
   hasEntered(key: string): boolean {
-    return this.enteredToasts.has(key);
+    return !!this.enteredToasts[key];
   }
 }

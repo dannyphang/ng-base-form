@@ -1,28 +1,19 @@
 <div class="toast-container top-right">
-  <!-- TODO -->
-  <p-message
-    *ngFor="let toast of toastList"
+  <div
+    *ngFor="let toast of toastList; trackBy: trackByKey"
     [ngClass]="{
-      'toast-enter': !hasEntered(toast.key),
-      'toast-enter-active': hasEntered(toast.key),
-      'toast-leave': isClosing(toast.key),
+      'toast-item': true,
+      'toast-severity--success': toast.severity === 'success',
+      'toast-severity--error': toast.severity === 'error',
+      'toast-severity--info': toast.severity === 'info',
+      'toast-severity--warn': toast.severity === 'warn',
+      'toast-enter': !hasEntered(toast.key) && !isClosing(toast.key),
+      'toast-enter-active': hasEntered(toast.key) && !isClosing(toast.key),
       'toast-leave-active': isClosing(toast.key),
     }"
-    [severity]="toast.severity"
   >
-    <ng-template pTemplate="content">
-      <div class="toast-div tw-flex">
-        <div class="message-div tw-gap-[var(--content-gap)] tw-flex">
-          <div class="tw-grid tw-items-center">
-            <span [class]="toast.icon"></span>
-          </div>
-          <div>{{ toast.message }}</div>
-        </div>
-
-        <div class="close-icon tw-flex tw-items-center">
-          <i class="pi pi-times" (click)="removeToast(toast.key)" style="cursor: pointer"></i>
-        </div>
-      </div>
-    </ng-template>
-  </p-message>
+    <span [class]="toast.icon"></span>
+    <div class="toast-message">{{ toast.message }}</div>
+    <i class="pi pi-times toast-close" (click)="removeToast(toast.key)"></i>
+  </div>
 </div>

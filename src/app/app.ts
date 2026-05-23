@@ -84,7 +84,8 @@ export class App {
       onClickFunc: () => {
         this.toastService.addSingle({
           message: "BUTTON.CLICK",
-          severity: "success"
+          severity: "success",
+          // sticky: true
         })
       }
     },
