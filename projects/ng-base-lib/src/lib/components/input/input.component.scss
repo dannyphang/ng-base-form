@@ -31,6 +31,12 @@
 
     .input-container {
       position: relative;
+      width: 100%;
+
+      .p-inputwrapper,
+      .p-inputtext {
+        width: 100% !important;
+      }
 
       .description-message {
         font-size: 12px;
@@ -84,11 +90,26 @@
       .pl-30 {
         padding-left: 30px;
       }
+
+      .prefix {
+        ::ng-deep {
+          border-top-left-radius: 0;
+          border-bottom-left-radius: 0;
+        }
+      }
+
+      .suffix {
+        ::ng-deep {
+          border-top-right-radius: 0;
+          border-bottom-right-radius: 0;
+        }
+      }
     }
 
     .input-switch-container {
       display: flex;
       align-items: center;
+      // width: 100%;
 
       p-inputswitch {
         display: flex;
@@ -98,6 +119,21 @@
     .input-number-container {
       position: relative;
       display: flex;
+      width: 100%;
+
+      .prefix .p-inputnumber-input {
+        ::ng-deep {
+          border-top-left-radius: 0;
+          border-bottom-left-radius: 0;
+        }
+      }
+
+      .suffix .p-inputnumber-input {
+        ::ng-deep {
+          border-top-right-radius: 0;
+          border-bottom-right-radius: 0;
+        }
+      }
 
       p-inputnumber,
       .p-inputnumber {
@@ -120,17 +156,6 @@
           cursor: default;
           background-color: $readonly_background_color;
         }
-      }
-
-      .prefix {
-        position: absolute;
-        top: 50%;
-        left: 12px;
-        transform: translateY(-50%);
-      }
-
-      .suffix {
-        padding: 12px;
       }
     }
 

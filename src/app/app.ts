@@ -47,6 +47,7 @@ export class App {
         column: 0,
         row: 0,
       },
+      prefix: 'U'
     },
     {
       label: 'gender',
@@ -131,6 +132,16 @@ export class App {
         row: 5,
       },
       mode: 'chips'
+    },
+    {
+      label: 'number',
+      type: CONTROL_TYPE.Textbox,
+      layoutDefine: {
+        column: 1,
+        row: 5,
+      },
+      mode: 'number',
+      suffix: "kg"
     }
   ]
 
