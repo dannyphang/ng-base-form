@@ -140,11 +140,14 @@
     </div>
 
     <!-- TODO: chips -->
-    <!-- <div class="input-number-container" *ngIf="mode === 'chips'">
-      <p-chip
-        [allowDuplicate]="false"
+    <div class="input-number-container" *ngIf="mode === 'chips'">
+      <p-autoComplete
+        [multiple]="true"
         [separator]="seperator"
         [formControl]="fieldControl"
+        [typeahead]="false"
+        [addOnBlur]="true"
+        [addOnTab]="true"
         (onBlur)="onBlur()"
         [maxlength]="maxLength"
         placeholder="{{ placeholder | translate }}"
@@ -152,20 +155,20 @@
           invalid: checkInvalidField(),
           'pr-30': !!iconUrl,
           'pl-30': !!leftIconUrl || !!prefix,
-          disabled: disabled
+          disabled: disabled,
         }"
-        [inputStyle]="{ 'padding-left': paddingForPrefix + 'px' }"
+        [inputStyle]="{ 'padding-left': paddingForPrefix + 'px', width: '100%' }"
         pAutoFocus
         [autofocus]="autoFocus"
         [onlyNumber]="onlyNumber"
-      >
-      </p-chip>
+        [class]="styleClass"
+      ></p-autoComplete>
 
       <img *ngIf="!!iconUrl" [src]="iconUrl" />
       <img class="leftIcon" *ngIf="!!leftIconUrl" [src]="leftIconUrl" />
       <div #prefix_content class="prefix" *ngIf="!!prefix">{{ prefix }}</div>
       <div *ngIf="suffix" class="suffix">{{ suffix }}</div>
-    </div> -->
+    </div>
   </p-iconField>
 
   <!-- error message -->

@@ -79,6 +79,11 @@ export class BaseInputComponent
       });
     }
 
+    // chips
+    if (this.mode === 'chips' && !Array.isArray(this.fieldControl.value)) {
+      this.fieldControl.setValue([], { emitEvent: false });
+    }
+
     this.paddingForPrefix = this.prefix_content?.nativeElement.clientWidth;
   }
 

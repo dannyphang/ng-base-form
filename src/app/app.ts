@@ -123,7 +123,15 @@ export class App {
       },
       mode: 'range' // TODO: will shows format invalid format message
     },
-
+    {
+      label: 'chips',
+      type: CONTROL_TYPE.Textbox,
+      layoutDefine: {
+        column: 0,
+        row: 5,
+      },
+      mode: 'chips'
+    }
   ]
 
   constructor(

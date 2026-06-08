@@ -18,6 +18,7 @@ import { ToastModule } from 'primeng/toast';
 import { DatePickerModule } from 'primeng/datepicker';
 import { BreadcrumbModule } from 'primeng/breadcrumb';
 import { TextareaModule } from 'primeng/textarea';
+import { AutoCompleteModule } from 'primeng/autocomplete';
 
 const PRIMENG_MODULES: any[] = [
     ButtonModule,
@@ -38,6 +39,7 @@ const PRIMENG_MODULES: any[] = [
     DatePickerModule,
     BreadcrumbModule,
     TextareaModule,
+    AutoCompleteModule,
 ]
 
 @NgModule({
