@@ -4,18 +4,19 @@
     class="fz-14_lh-16"
     [ngClass]="{ oneline: labelOneLine }"
     [ngClass]="labelStyle"
-    [pTooltip]="labelOneLine ? '{{label| translate}}' : ''"
+    style="display: flex"
+    [pTooltip]="labelOneLine ? '{{ label | translate }}' : ''"
     tooltipEvent="hover"
     tooltipPosition="top"
-    >{{ labelKey | translate : param
-    }}<span *ngIf="!required && showOptionalText">
-      ({{ "OPTIONAL" | translate }})</span
-    >
+  >
+    {{ labelKey | translate: param }}
+    <span *ngIf="!required && showOptionalText"> ({{ 'OPTIONAL' | translate }})</span>
     <span class="asterisk" *ngIf="required">*</span>
     <i
       *ngIf="iconLabelTooltipKey"
-      class="pi pi-info-circle ml-2"
-      pTooltip="{{ iconLabelTooltipKey | translate : iconLabelTooltipParam }}"
+      class="pi pi-info-circle"
+      style="margin-left: 0.5rem; align-content: center"
+      pTooltip="{{ iconLabelTooltipKey | translate: iconLabelTooltipParam }}"
       tooltipEvent="hover"
       tooltipPosition="top"
     ></i>
@@ -24,6 +25,6 @@
 
 <div class="field-error" *ngIf="mode === 'error'">
   <div class="error-message fz-14_lh-16">
-    {{ labelKey | translate : param }}
+    {{ labelKey | translate: param }}
   </div>
 </div>

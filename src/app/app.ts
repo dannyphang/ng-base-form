@@ -47,7 +47,8 @@ export class App {
         column: 0,
         row: 0,
       },
-      prefix: 'U'
+      prefix: 'U',
+      iconLabelTooltip: 'testing'
     },
     {
       label: 'gender',
@@ -56,7 +57,8 @@ export class App {
         column: 1,
         row: 0,
       },
-      options: this.options
+      options: this.options,
+      iconLabelTooltip: 'testing'
     },
     {
       label: 'checkbox',
