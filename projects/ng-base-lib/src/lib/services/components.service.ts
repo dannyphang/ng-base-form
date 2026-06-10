@@ -40,6 +40,7 @@ export interface BaseFormConfig {
         action: (fieldConfig?: FormConfig, comp?: ComponentRef<any>) => void;
         debounce?: number;
     }[];
+    styleClass?: string;
 }
 
 export enum CONTROL_TYPE {
@@ -136,6 +137,8 @@ export interface BaseInputFormConfig extends BaseFormConfig, BaseInputTextConfig
     labelTextStyle?: string;
     seperator?: string;
     isValidPassword?: boolean;
+    iconLeftStyle?: string;
+    iconRightStyle?: string;
 }
 
 export interface BaseDatepickerFormConfig extends BaseFormConfig {
