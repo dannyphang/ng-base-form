@@ -8,11 +8,15 @@
   }
 
   .p-icon {
-    color: var(--primary-color);
+    color: var(--p-primary-color);
 
     &:hover {
-      color: var(--highlight-text-color);
+      color: var(--p-highlight-text-color);
     }
+  }
+
+  .p-chip-remove-icon {
+    font-size: inherit !important;
   }
 }
 
