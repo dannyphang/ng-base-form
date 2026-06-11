@@ -61,6 +61,7 @@ export class ToastService {
             key: toastConfig.key,
             sticky: toastConfig.sticky || toastConfig.isLoading,
             icon: toastConfig.isLoading ? 'pi pi-spin pi-spinner' : toastConfig.icon,
+            isLoading: toastConfig.isLoading,
         });
         this.toastListSubject.next([...this.toasts]);
 
@@ -100,6 +101,7 @@ export class ToastService {
                     key: 'tr',
                     sticky: i.isLoading,
                     icon: i.isLoading ? 'pi pi-spin pi-spinner' : undefined,
+                    isLoading: i.isLoading,
                 };
             }),
         );
