@@ -1,7 +1,7 @@
 <div class="checkbox-container">
   @if (!!label) {
     <app-base-label
-      class="mb-3 main-label"
+      class="main-label"
       [required]="checkRequiredField()"
       [label]="label"
       [labelOneLine]="labelOneLine"
@@ -11,9 +11,9 @@
   }
   <div
     [class]="'' + optionsContainerClass"
-    [ngClass]="{ 'flex-col': direction === 'column', 'flex-row': direction === 'row' }"
+    [style]="direction === 'row' ? 'flex-direction: row' : 'flex-direction: column'"
   >
-    <div class="gap-[var(--content-gap)] flex flex-wrap">
+    <div style="display: flex; flex-wrap: wrap; gap: var(--content-gap)">
       <div class="input-container" *ngFor="let item of options">
         <p-checkbox
           [name]="item.value"
