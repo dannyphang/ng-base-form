@@ -17,8 +17,7 @@
       [formControl]="fieldControl"
       [readonly]="disabled"
       pTooltip="{{ tooltip | translate }}"
-      pAutoFocus
-      [autofocus]="autoFocus"
+      [pAutoFocus]="autoFocus"
       [class]="styleClass"
     ></textarea>
     <div class="count" *ngIf="maxLength > 0 && !hideLengthLimit">

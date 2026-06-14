@@ -48,7 +48,8 @@ export class App {
         row: 0,
       },
       prefix: 'U',
-      iconLabelTooltip: 'testing'
+      iconLabelTooltip: 'testing',
+      autoFocus: true
     },
     {
       label: 'gender',

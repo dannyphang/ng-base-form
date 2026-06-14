@@ -23,8 +23,7 @@
       >
         <input
           pInputText
-          pAutoFocus
-          [autofocus]="autoFocus"
+          [pAutoFocus]="autoFocus"
           [type]="mode"
           placeholder="{{ placeholder | translate }}"
           [ngClass]="{
@@ -54,8 +53,7 @@
       <div class="input-container" *ngIf="mode === 'password'">
         <input
           pInputText
-          pAutoFocus
-          [autofocus]="autoFocus"
+          [pAutoFocus]="autoFocus"
           [type]="mode"
           placeholder="{{ placeholder | translate }}"
           [ngClass]="{
@@ -77,8 +75,7 @@
 
         <input
           pInputText
-          pAutoFocus
-          [autofocus]="autoFocus"
+          [pAutoFocus]="autoFocus"
           [type]="mode"
           placeholder="{{ placeholder | translate }}"
           [ngClass]="{
@@ -134,8 +131,7 @@
           [allowEmpty]="true"
           [min]="min"
           [max]="max"
-          pAutoFocus
-          [autofocus]="autoFocus"
+          [pAutoFocus]="autoFocus"
           [onlyNumber]="true"
           [class]="styleClass"
           [class.prefix]="prefix"
@@ -171,8 +167,7 @@
             disabled: disabled,
           }"
           [inputStyle]="{ 'padding-left': paddingForPrefix + 'px', width: '100%' }"
-          pAutoFocus
-          [autofocus]="autoFocus"
+          [pAutoFocus]="autoFocus"
           [onlyNumber]="onlyNumber"
           [class]="styleClass"
           [class.prefix]="prefix"

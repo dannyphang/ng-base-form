@@ -6,6 +6,10 @@
 
 @import 'primeicons/primeicons.css';
 
+:root {
+  --content-gap: 15px;
+}
+
 body {
   font-family: 'Inter', sans-serif;
   margin: 0;

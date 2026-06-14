@@ -1,24 +1,20 @@
 <div class="checkbox-container">
-  <app-base-label
-    class="mb-3"
-    *ngIf="!!label"
-    [required]="checkRequiredField()"
-    [label]="label"
-    [labelOneLine]="labelOneLine"
-    [iconLabelTooltip]="iconLabelTooltip"
-  >
-  </app-base-label>
+  @if (!!label) {
+    <app-base-label
+      class="mb-3 main-label"
+      [required]="checkRequiredField()"
+      [label]="label"
+      [labelOneLine]="labelOneLine"
+      [iconLabelTooltip]="iconLabelTooltip"
+    >
+    </app-base-label>
+  }
   <div
-    [class]="'flex flex-wrap ' + optionsContainerClass"
-    [ngClass]="{ 'flex-column': direction === 'column' }"
+    [class]="'' + optionsContainerClass"
+    [ngClass]="{ 'flex-col': direction === 'column', 'flex-row': direction === 'row' }"
   >
-    <div *ngIf="switchInput">
-      <!-- TODO -->
-      <!-- <app-input-switch [fieldControl]="fieldControl"></app-input-switch> -->
-    </div>
-
-    <div *ngIf="!switchInput" class="tw-gap-[var(--content-gap)] tw-flex tw-flex-wrap">
-      <div class="input-container mr-4" *ngFor="let item of options">
+    <div class="gap-[var(--content-gap)] flex flex-wrap">
+      <div class="input-container" *ngFor="let item of options">
         <p-checkbox
           [name]="item.value"
           [(ngModel)]="selected"
@@ -26,12 +22,15 @@
           [inputId]="item.value"
           [disabled]="item?.disabled || disabled"
           (onChange)="handleChange($event, item.value)"
-          [styleClass]="styleClass"
+          [class]="styleClass"
         >
         </p-checkbox>
-        <label *ngIf="item.label" [for]="item.value" class="fz-14_lh-16"
-          >{{ item.label | translate }} <span class="asterisk" *ngIf="item.required">*</span></label
-        >
+        @if (item.label) {
+          <label [for]="item.value" class=""
+            >{{ item.label | translate }}
+            <span class="asterisk" *ngIf="item.required">*</span></label
+          >
+        }
       </div>
     </div>
   </div>

@@ -20,6 +20,7 @@ import { TextareaModule } from 'primeng/textarea';
 import { BaseDatepickerComponent } from "./datepicker/datepicker.component";
 import { BreadcrumbComponent } from "./breadcrumb/breadcrumb.component";
 import { BaseTextareaComponent } from "./textarea/textarea.component";
+import { AutoFocusModule } from 'primeng/autofocus';
 
 const components = [
     BaseLabelComponent,
@@ -35,7 +36,8 @@ const components = [
     ToastComponent,
     BaseTextareaComponent,
     BaseDatepickerComponent,
-    BreadcrumbComponent
+    BreadcrumbComponent,
+    AutoFocusModule
 ]
 
 export const ComponentImports = [
