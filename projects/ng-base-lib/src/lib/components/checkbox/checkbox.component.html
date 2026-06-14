@@ -14,27 +14,24 @@
     [ngStyle]="{
       'flex-direction': direction === 'row' ? 'row' : 'column',
     }"
-    style="display: flex"
+    style="display: flex; flex-wrap: wrap; gap: var(--content-gap)"
   >
-    <div style="display: flex; flex-wrap: wrap; gap: var(--content-gap)">
-      <div class="input-container" *ngFor="let item of options">
-        <p-checkbox
-          [name]="item.value"
-          [(ngModel)]="selected"
-          [value]="item.value"
-          [inputId]="item.value"
-          [disabled]="item?.disabled || disabled"
-          (onChange)="handleChange($event, item.value)"
-          [class]="styleClass"
+    <div class="input-container" *ngFor="let item of options">
+      <p-checkbox
+        [name]="item.value"
+        [(ngModel)]="selected"
+        [value]="item.value"
+        [inputId]="item.value"
+        [disabled]="item?.disabled || disabled"
+        (onChange)="handleChange($event, item.value)"
+        [class]="styleClass"
+      >
+      </p-checkbox>
+      @if (item.label) {
+        <label [for]="item.value" class=""
+          >{{ item.label | translate }} <span class="asterisk" *ngIf="item.required">*</span></label
         >
-        </p-checkbox>
-        @if (item.label) {
-          <label [for]="item.value" class=""
-            >{{ item.label | translate }}
-            <span class="asterisk" *ngIf="item.required">*</span></label
-          >
-        }
-      </div>
+      }
     </div>
   </div>
   <app-base-label *ngIf="checkInvalidField()" [label]="errorMessage" mode="error"> </app-base-label>
