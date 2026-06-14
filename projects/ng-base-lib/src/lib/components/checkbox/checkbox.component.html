@@ -11,7 +11,10 @@
   }
   <div
     [class]="'' + optionsContainerClass"
-    [style]="direction === 'row' ? 'flex-direction: row' : 'flex-direction: column'"
+    [ngStyle]="{
+      'flex-direction': direction === 'row' ? 'row' : 'column',
+    }"
+    style="display: flex"
   >
     <div style="display: flex; flex-wrap: wrap; gap: var(--content-gap)">
       <div class="input-container" *ngFor="let item of options">
