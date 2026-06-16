@@ -4,7 +4,7 @@ import { BaseFieldControlComponent } from '../base-field-control/base-field-cont
 import { ComponentImports } from '../component-import.module';
 
 @Component({
-  selector: 'app-input-switch',
+  selector: 'app-base-switch',
   templateUrl: './input-switch.component.html',
   styleUrl: './input-switch.component.scss',
   imports: [ComponentImports],

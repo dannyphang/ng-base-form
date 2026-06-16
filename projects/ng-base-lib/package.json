@@ -1,6 +1,6 @@
 {
   "name": "ng-base-lib",
-  "version": "1.0.25",
+  "version": "1.0.26",
   "peerDependencies": {
     "@angular/common": "^21.2.0",
     "@angular/core": "^21.2.9",
