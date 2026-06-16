@@ -18,7 +18,7 @@ import {
     BaseRadioComponent,
     BaseTextareaComponent,
     BaseDatepickerComponent,
-    InputSwitchComponent,
+    BaseSwitchComponent,
     // Import your other components here too! (e.g. BaseDropdownComponent)
 } from 'ng-base-lib';
 
@@ -33,7 +33,7 @@ export const allBaseUIForm = {
     [CONTROL_TYPE.Radio]: BaseRadioComponent,
     [CONTROL_TYPE.Textarea]: BaseTextareaComponent,
     [CONTROL_TYPE.Calendar]: BaseDatepickerComponent,
-    [CONTROL_TYPE.Switch]: InputSwitchComponent,
+    [CONTROL_TYPE.Switch]: BaseSwitchComponent,
 };
 
 export const appProviders = [

@@ -2,12 +2,12 @@ import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 
-import { BaseButtonComponent, BaseCheckboxComponent, OptionsModel, BaseDropdownComponent, BaseInputComponent, BaseFormComponent, FormConfig, CONTROL_TYPE, ToastService, ToastComponent, BreadcrumbComponent, ChipComponent } from 'ng-base-lib';
+import { BaseButtonComponent, BaseCheckboxComponent, OptionsModel, BaseDropdownComponent, BaseInputComponent, BaseFormComponent, FormConfig, CONTROL_TYPE, ToastService, ToastComponent, BreadcrumbComponent, ChipComponent, BaseSwitchComponent } from 'ng-base-lib';
 import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, BaseButtonComponent, BaseCheckboxComponent, BaseDropdownComponent, BaseInputComponent, BaseInputComponent, BaseFormComponent, ToastComponent, BreadcrumbComponent, ChipComponent],
+  imports: [BaseSwitchComponent, BaseFormComponent, ToastComponent, BreadcrumbComponent, ChipComponent],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })

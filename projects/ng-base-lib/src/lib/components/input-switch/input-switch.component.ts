@@ -9,7 +9,7 @@ import { ComponentImports } from '../component-import.module';
   styleUrl: './input-switch.component.scss',
   imports: [ComponentImports],
 })
-export class InputSwitchComponent extends BaseFieldControlComponent {
+export class BaseSwitchComponent extends BaseFieldControlComponent {
   @Input() content!: string;
   @Input() inline: boolean = false;
   @Input() descriptionMessage: string = '';
