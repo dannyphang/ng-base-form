@@ -5,7 +5,7 @@
     [ngClass]="{ oneline: labelOneLine }"
     [ngClass]="labelStyle"
     style="display: flex"
-    [pTooltip]="labelOneLine ? '{{ label | translate }}' : ''"
+    [pTooltip]="labelOneLine ? (labelKey | translate: param) : ''"
     tooltipEvent="hover"
     tooltipPosition="top"
   >

@@ -15,3 +15,4 @@ export * from './toast/toast.component';
 export * from './textarea/textarea.component';
 export * from './datepicker/datepicker.component';
 export * from './breadcrumb/breadcrumb.component';
+export * from './input-switch/input-switch.component';

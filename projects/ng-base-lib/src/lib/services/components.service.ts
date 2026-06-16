@@ -58,6 +58,7 @@ export enum CONTROL_TYPE {
     ButtonSet = 'buttonset',
     InputMask = 'inputmask',
     Button = 'button',
+    Switch = 'switch',
     // autocomplete = 'autocomplete'
 }
 
@@ -122,7 +123,7 @@ export interface BaseInputTextConfig {
 
 export interface BaseInputFormConfig extends BaseFormConfig, BaseInputTextConfig {
     type: CONTROL_TYPE.Textbox;
-    mode?: 'text' | 'number' | 'password' | 'switch' | 'label-text' | 'email' | 'url' | 'phone' | 'chips';
+    mode?: 'text' | 'number' | 'password' | 'label-text' | 'email' | 'url' | 'phone' | 'chips';
     prefix?: string;
     suffix?: string;
     onlyNumber?: boolean;
@@ -134,11 +135,17 @@ export interface BaseInputFormConfig extends BaseFormConfig, BaseInputTextConfig
     useGrouping?: boolean;
     content?: string;
     descriptionMessage?: string;
-    labelTextStyle?: string;
     seperator?: string;
     isValidPassword?: boolean;
     iconLeftStyle?: string;
     iconRightStyle?: string;
+}
+
+export interface BaseSwitchFormConfig extends BaseFormConfig, BaseInputTextConfig {
+    type: CONTROL_TYPE.Switch;
+    content?: string;
+    descriptionMessage?: string;
+    inline?: boolean;
 }
 
 export interface BaseDatepickerFormConfig extends BaseFormConfig {
@@ -311,7 +318,8 @@ export type FormConfig =
     | BaseHTMLFormConfig
     | BaseLabelFormConfig
     | BaseFormArrayConfig
-    | BaseButtonFormConfig;
+    | BaseButtonFormConfig
+    | BaseSwitchFormConfig;
 
 export function isBaseButton(
     config: FormConfig,

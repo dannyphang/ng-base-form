@@ -10,6 +10,10 @@ import { ComponentImports } from '../component-import.module';
   imports: [ComponentImports],
 })
 export class InputSwitchComponent extends BaseFieldControlComponent {
+  @Input() content!: string;
+  @Input() inline: boolean = false;
+  @Input() descriptionMessage: string = '';
+
   @Output() switchUpdate: EventEmitter<any> = new EventEmitter<any>();
 
   constructor() {

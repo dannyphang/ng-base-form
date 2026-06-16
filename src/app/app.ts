@@ -46,6 +46,7 @@ export class App {
       layoutDefine: {
         column: 0,
         row: 0,
+        colSpan: 6
       },
       prefix: 'U',
       iconLabelTooltip: 'testing',
@@ -57,6 +58,7 @@ export class App {
       layoutDefine: {
         column: 1,
         row: 0,
+        colSpan: 6
       },
       options: this.options,
       iconLabelTooltip: 'testing'
@@ -67,6 +69,7 @@ export class App {
       layoutDefine: {
         column: 0,
         row: 1,
+        colSpan: 6
       },
       options: this.options
     },
@@ -76,6 +79,7 @@ export class App {
       layoutDefine: {
         column: 1,
         row: 1,
+        colSpan: 6
       },
     },
     {
@@ -84,6 +88,7 @@ export class App {
       layoutDefine: {
         column: 0,
         row: 2,
+        colSpan: 6
       },
       onClickFunc: () => {
         this.toastService.addSingle({
@@ -99,6 +104,7 @@ export class App {
       layoutDefine: {
         column: 1,
         row: 2,
+        colSpan: 6
       },
       options: this.options
     },
@@ -108,22 +114,25 @@ export class App {
       layoutDefine: {
         column: 0,
         row: 3,
+        colSpan: 6
       },
     },
     {
       label: 'date',
       type: CONTROL_TYPE.Calendar,
       layoutDefine: {
-        column: 0,
-        row: 4,
+        column: 1,
+        row: 3,
+        colSpan: 6
       },
     },
     {
       label: 'date multiple',
       type: CONTROL_TYPE.Calendar,
       layoutDefine: {
-        column: 1,
+        column: 0,
         row: 4,
+        colSpan: 6
       },
       mode: 'range' // TODO: will shows format invalid format message
     },
@@ -131,8 +140,9 @@ export class App {
       label: 'chips',
       type: CONTROL_TYPE.Textbox,
       layoutDefine: {
-        column: 0,
-        row: 5,
+        column: 1,
+        row: 4,
+        colSpan: 6
       },
       mode: 'chips'
     },
@@ -140,11 +150,22 @@ export class App {
       label: 'number',
       type: CONTROL_TYPE.Textbox,
       layoutDefine: {
-        column: 1,
+        column: 0,
         row: 5,
+        colSpan: 6
       },
       mode: 'number',
       suffix: "kg"
+    },
+    {
+      label: 'switch',
+      type: CONTROL_TYPE.Switch,
+      layoutDefine: {
+        column: 1,
+        row: 5,
+        colSpan: 6
+      },
+      inline: true
     }
   ]
 

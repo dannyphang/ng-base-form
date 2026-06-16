@@ -1,10 +1,28 @@
-<!-- TODO -->
+<div class="textbox-container">
+  <div [ngClass]="{ 'inline-layout': inline }">
+    <div class="label-wrapper">
+      <app-base-label
+        *ngIf="!!label"
+        [required]="checkRequiredField()"
+        [label]="label"
+        [labelOneLine]="labelOneLine"
+        [iconLabelTooltip]="iconLabelTooltip"
+      >
+      </app-base-label>
+      <div class="description-message" *ngIf="descriptionMessage">
+        {{ descriptionMessage | translate }}
+      </div>
+    </div>
 
-<!-- <div class="tw-flex tw-gap-[var(--content-gap)]">
-  <p-toggleswitch
-    (onChange)="inputSwitchOnClick()"
-    [formControl]="fieldControl"
-  ></p-toggleswitch>
+    <div class="input-switch-container">
+      <p-toggleswitch
+        (onChange)="inputSwitchOnClick()"
+        [formControl]="fieldControl"
+      ></p-toggleswitch>
+      <div class="inline-flex ml-2" *ngIf="content">{{ content | translate }}</div>
+    </div>
+  </div>
 
-  <app-base-label [label]="label" *ngIf="label"></app-base-label>
-</div> -->
+  <app-base-label ngClass="mt-2" *ngIf="checkInvalidField()" [label]="errorMessage" mode="error">
+  </app-base-label>
+</div>

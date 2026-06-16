@@ -2,8 +2,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { BaseFieldDataSourceControl } from './base-data-source-control';
 import { of } from 'rxjs';
-import { CONTROL_TYPE, FormConfig } from '../form/form.interface';
 import { FormControl } from '@angular/forms';
+import { CONTROL_TYPE, FormConfig } from '../../services/components.service';
 
 describe('BaseFieldDataSourceControl', () => {
   let component: BaseFieldDataSourceControl;

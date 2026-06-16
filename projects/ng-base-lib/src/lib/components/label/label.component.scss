@@ -18,3 +18,8 @@ label {
   color: red;
   padding-left: 5px;
 }
+.oneline {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

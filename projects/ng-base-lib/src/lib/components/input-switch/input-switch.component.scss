@@ -1,0 +1,40 @@
+@import '../../assets/styles/variables';
+
+:host ::ng-deep {
+  .textbox-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    box-sizing: border-box;
+
+    .inline-layout {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+
+    .label-wrapper {
+      display: flex;
+      flex-direction: column;
+      margin-right: 1rem;
+    }
+
+    .description-message {
+      font-size: 12px;
+      line-height: 18px;
+      color: #9f9f9f;
+      margin-top: 4px;
+    }
+
+    .input-switch-container {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+
+      p-toggleswitch {
+        display: flex;
+      }
+    }
+  }
+}
